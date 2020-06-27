@@ -1,7 +1,7 @@
 import React from "react";
 
 import {Link} from 'react-router-dom';
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiMapPin } from "react-icons/fi";
 
 
 import './Home.css'
@@ -24,6 +24,12 @@ const Home: React.FC =  (props:any) => {
                             <FiLogIn />
                         </span>
                         <strong>Create waste collection</strong>
+                    </Link>
+                    <Link to="see-point" className="see-point">
+                        <span>
+                            <FiMapPin />
+                        </span>
+                        <strong>See places to go</strong>
                     </Link>
                 </main>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
+import { AxiosResponse } from "axios";
 
 import MyMap from "./Map";
 
@@ -20,6 +21,7 @@ import api from '../../services/api';
 
 
 import './CreatePoint.css';
+
 
 
 const CreatePoint: React.FC = () => {
@@ -123,14 +125,20 @@ const CreatePoint: React.FC = () => {
 
 
         api.post('point', data)
-            .then((response) => {
-                alert("Success");
-                console.log({ response });
-                history.push('/');
+            .then((response:AxiosResponse<any>) => {
+                if (response.status === 200){
+                    alert("Success");
+                    console.log({ response });
+                    history.push('/');
+                }
             })
             .catch((response) => {
                 alert('Error');
                 console.log({ response });
+
+                if (response.response.status === 400){
+                    alert(response.response.data.reason);
+                }
             });
 
 

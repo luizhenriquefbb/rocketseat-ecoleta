@@ -1,11 +1,17 @@
-class ItemsModel {
+
+interface IItemsModel {
+    id:number;
+    image:string;
+    title:string
+}
+
+class ItemsModel  {
     id:number
     image: string;
     title: string;
 
     constructor(
-        {id, image, title,}:
-        {id:number, image:string, title:string,}
+        {id, image, title,}:IItemsModel
     ) {
         this.id = id;
         this.image = image;

@@ -22,6 +22,22 @@ export async function store(req: Request, res: Response) {
     // using default image for now
     const image = "https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60";
 
+    // check if all attributes exists and came from post
+    if (
+        !name ||
+        !email ||
+        !whatsapp ||
+        !latitude ||
+        !longitude ||
+        !city ||
+        !UF ||
+        !items
+    ) {
+        return res.status(400).json({ reason: 'missing parameters' });
+    }
+
+
+
     const point = new PointModel({
         name,
         email,

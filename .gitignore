@@ -1,1 +1,6 @@
 .DS_Store
+videos/
+assets/
+yarn.lock
+NLW-1.code-workspace
+

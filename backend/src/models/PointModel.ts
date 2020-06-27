@@ -1,3 +1,15 @@
+interface IPointModel {
+    id?: Number;
+    name: string;
+    email: string;
+    whatsapp: string;
+    latitude: number;
+    longitude: number;
+    city: string;
+    UF: string;
+    image: string;
+}
+
 export default class PointModel {
     name: string;
     email: string;
@@ -10,11 +22,7 @@ export default class PointModel {
     id?: Number;
 
     constructor(
-        { id, name, email, whatsapp, latitude, longitude, city, UF, image = "", } :
-        {
-            id?: Number, name: string, email: string, whatsapp: string, latitude: number,
-            longitude: number, city: string, UF: string, image: string,
-        }
+        { id, name, email, whatsapp, latitude, longitude, city, UF, image = "", } : IPointModel
     ){
         if (id) {
             this.id = id;

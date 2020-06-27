@@ -56,6 +56,9 @@
 
   margin-top: 40px;
 }
+#page-home .content main a.see-point {
+  background: var(--secondary-color);
+}
 
 #page-home .content main a span {
   display: block;
@@ -83,6 +86,9 @@
 
 #page-home .content main a:hover {
   background: #2FB86E;
+}
+#page-home .content main a.see-point:hover {
+  background: #b34e2f;
 }
 
 @media(max-width: 900px) {
