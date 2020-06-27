@@ -1,6 +1,13 @@
 .DS_Store
 videos/
-assets/
 yarn.lock
 NLW-1.code-workspace
+
+./assets/
+assets/dia-2.zip
+assets/dia-3.zip
+assets/dia-4.zip
+assets/dia-5.zip
+assets/Wallpapers NLW.zip
+
 

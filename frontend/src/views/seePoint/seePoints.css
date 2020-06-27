@@ -1,3 +1,5 @@
+/* seePoints.css */
+
 #page-see-point{
   width: 100%;
   max-width: 1100px;
@@ -22,4 +24,152 @@
 #page-see-point header a svg {
 	margin-right: 16px;
 	color: var(--primary-color);
+}
+
+#page-see-point main {
+	margin: 80px auto;
+	padding: 64px;
+	max-width: 730px;
+	background: #FFF;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+}
+
+#page-see-point main h1 {
+	font-size: 54px;
+	color: var(--title-color);
+}
+
+#page-see-point main p {
+	font-size: 24px;
+	margin-top: 24px;
+	line-height: 38px;
+}
+
+#page-see-point form {
+	display: flex;
+	flex-direction: column;
+}
+
+#page-see-point form fieldset {
+  margin-top: 64px;
+  min-inline-size: auto;
+  border: 0;
+}
+
+#page-see-point form legend {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#page-see-point form legend h2 {
+  font-size: 24px;
+}
+
+#page-see-point form legend span {
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+#page-see-point form .field-group {
+  flex: 1;
+  display: flex;
+}
+
+#page-see-point form .field {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+#page-see-point form .field input[type=text],
+#page-see-point form .field input[type=email],
+#page-see-point form .field input[type=number] {
+  flex: 1;
+  background: #F0F0F5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6C6C80;
+}
+
+#page-see-point form .field select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  flex: 1;
+  background: #F0F0F5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6C6C80;
+}
+
+#page-see-point form .field input::placeholder {
+  color: #A0A0B2;
+}
+
+#page-see-point form .field label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+#page-see-point form .field :disabled {
+  cursor: not-allowed;
+}
+
+#page-see-point form .field-group .field + .field {
+  margin-left: 24px;
+}
+
+#page-see-point form .field-group input + input {
+  margin-left: 24px;
+}
+
+#page-see-point form .field-check {
+  flex-direction: row;
+  align-items: center;
+}
+
+#page-see-point form .field-check input[type=checkbox] {
+  background: #F0F0F5;
+}
+
+#page-see-point form .field-check label {
+  margin: 0 0 0 8px;
+}
+
+#page-see-point form .leaflet-container {
+  width: 100%;
+  height: 350px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+#page-see-point form button {
+  width: 260px;
+  height: 56px;
+  background: var(--primary-color);
+  border-radius: 8px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 16px;
+  border: 0;
+  align-self: flex-end;
+  margin-top: 40px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+#page-see-point form button:hover {
+  background: #2FB86E;
 }
