@@ -68,7 +68,7 @@ First, you need to have <kbd> [NodeJS](https://nodejs.org/en/download/) </kbd> i
 
 You can also choose to use **yarn** instead of **npm**. You can install by clicking on this <kbd> [link][yarn] </kbd>
 
-After **Node** is installed, install **React and React Native (Expo)** dependencies globally, using the commands:
+After **Node** be installed, install **React and React Native (Expo)** dependencies globally, using the commands:
 
 ```sh
 # React:
@@ -87,8 +87,8 @@ $ yarn
 examples:
 ```sh
 
-# Install dependencies of server:
-$ cd ./server
+# Install dependencies of the backend:
+$ cd ./backend
 $ yarn
 
 # Install dependencies of website:
@@ -100,11 +100,11 @@ $ cd ./mobile
 $ yarn
 ```
 
-### Using the server
+### Using the backend
 
 ```sh
 # Go to folder
-$ cd ./server
+$ cd ./backend
 
 # Create DB:
 $ npx knex migrate:latest
@@ -131,7 +131,7 @@ $ yarn start
 
 ### Using mobile
 
-Install <kbd>[Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)</kbd> in your phone.
+Install <kbd>[Expo app](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)</kbd> in your phone.
 
 ```sh
 # Go to folder:
@@ -142,7 +142,7 @@ $ npm run start
 ```
 Now open the app expo e **LAN** mode e scan the QRCode
 
-## **:star2: AGRADECIMENTOS**
+## **:star2: Special thanks to**
 
 <div align=center>
 
@@ -179,7 +179,7 @@ Now open the app expo e **LAN** mode e scan the QRCode
 
 </div>
 
-## **:books: REFERÊNCIAS**
+## **:books: References**
 
 - [React + TypeScript Cheat Sheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
 - [Blog Rocketseat](https://blog.rocketseat.com.br/)
@@ -215,7 +215,7 @@ Now open the app expo e **LAN** mode e scan the QRCode
 
 [mobile_react-native_badge]: https://img.shields.io/badge/mobile-react%20native-blueviolet
 
-[server_nodejs_badge]: https://img.shields.io/badge/server-nodejs-important
+[server_nodejs_badge]: https://img.shields.io/badge/backend-nodejs-important
 
 <!-- Techs -->
 
