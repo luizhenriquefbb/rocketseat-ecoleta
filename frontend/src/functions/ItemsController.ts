@@ -1,5 +1,5 @@
 import api from '../services/api'
-import ItemModel from '../models/Item';
+import ItemModel from '../models/ItemModel';
 
 
 type TGetItemCB = React.Dispatch<React.SetStateAction<ItemModel[]>>;
@@ -15,7 +15,7 @@ class ItemsController {
                 items = response.data.map((item:any) => new ItemModel({
                     id: item.id,
                     title: item.title,
-                    image: item.image_url
+                    image: item.image_url,
                 }));
 
                 callBack(items);

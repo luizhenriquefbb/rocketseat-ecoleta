@@ -1,0 +1,95 @@
+/* pointDetails.css */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  color: var(--title-color);
+  font-weight: bold;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+}
+
+header a svg {
+  margin-right: 16px;
+  color: var(--primary-color);
+}
+
+
+#point-detail {
+  padding: 40px 3%;
+  padding-top: 23px;
+}
+
+#point-detail main {
+    max-width: 970px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 29px 112px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#point-detail main h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+#point-detail main h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+#point-detail main img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+#point-detail .items-wrapper {
+
+  margin: 20px 0;
+}
+
+#point-detail .items-list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+
+#point-detail .items-list .item {
+  max-width: 150px;
+  min-width: 100px;
+  height: 61px;
+}
+
+#point-detail .locations-details-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#point-detail .locations-details-wrapper > * {
+
+  padding: 12px 24px;
+  border: solid 1px #c0bebe;
+  margin-right: 16px;
+}
+
+.span-span-wrapper {
+  display: flex;
+  margin: 14px 0;
+}
+
+.span-span-wrapper > *:nth-child(1){
+  margin-right: 22px;
+}
+
+.span-span-wrapper .title{
+  font-weight: bold;
+}
+

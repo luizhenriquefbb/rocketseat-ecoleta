@@ -94,6 +94,12 @@ export async function show(req: Request, res: Response) {
         join('points_items', 'items.id', '=', 'points_items.item_id').
         where('points_items.point_id', pointId);
 
+    const items_parsed = items.map(item => {
+        return {
+            ...item,
+            image: `${BASE_URL}/uploads/${item.image}`,
+        }
+    })
     if (!point) {
         return res.status(400).json({
             reason: 'point not found',
@@ -102,7 +108,7 @@ export async function show(req: Request, res: Response) {
     } else {
         return res.status(200).json({
             point,
-            items
+            items:items_parsed,
         });
     }
 }

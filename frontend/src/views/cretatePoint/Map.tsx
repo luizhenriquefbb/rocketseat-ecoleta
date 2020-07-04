@@ -1,6 +1,6 @@
 import React /*, { useState } */ from 'react';
 import { Map, TileLayer, Marker, } from "react-leaflet";
-import { LatLngTuple, LeafletMouseEvent } from 'leaflet';
+import { LatLngTuple, LeafletMouseEvent, Icon, } from 'leaflet';
 
 import './leaflet.css';
 
@@ -9,7 +9,13 @@ interface IMap {
     longitude:number;
 
     clickMouseCB : React.Dispatch<React.SetStateAction<[number, number]>>
-    // clickMouseCB : (position:[number, number]) => void;
+    markers?: {
+        latitude:number;
+        longitude:number;
+        image:string;
+        title:string;
+        markerClickAction : () => void;
+    }[]
 }
 
 const MyMap:React.FC<IMap> = (props) => {
@@ -40,7 +46,29 @@ const MyMap:React.FC<IMap> = (props) => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
+                {props.markers?.map((point, index) => {
+                    const iconWith = 80;
+                    return (
+                        <Marker
+                            key={index}
+                            position={[point.latitude, point.longitude]}
+                            icon={
+                                new Icon({
+                                    iconUrl: point.image,
+                                    iconSize:     [iconWith, 60], // size of the icon
+                                    iconAnchor:   [iconWith/2, 90], // point of the icon which will correspond to marker's location
+                                    shadowAnchor: [4, 62],  // the same for the shadow
+                                    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+                                })
+                            }
+                            title={point.title}
+                            onclick={() => point.markerClickAction()}
+                        />
+                    )
+                })}
+
                 <Marker position={position} />
+
 
         </Map>
     )

@@ -398,7 +398,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .leaflet-marker-icon {
- background-image: url("https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png") !important;
+ background-image: url("https://unpkg.com/leaflet@1.6.0/dist/images/marker-icon.png");
+ /* background-image: url(../../assets/map-marker-alt-solid.svg); */
  border: none !important;
 }
 

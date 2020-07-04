@@ -9,11 +9,11 @@ import Header from "../../components/Header";
 import FieldSet from "../../components/forms/FieldSet";
 import Field from "../../components/forms/Field";
 import {SelectionCityField, SelectionUFField} from "../../components/forms/SelectionFiled";
-import ItemsModel from "../../models/Item";
-import ItemsController from "../../functions/ItemsUtils";
+import ItemsModel from "../../models/ItemModel";
+import ItemsController from "../../functions/ItemsController";
 import LocationUtils from "../../functions/locationUtils";
 import Uf from "../../models/UF";
-import City from "../../models/City";
+import City from "../../models/CityModel";
 
 import MyDropZone from "../../components/dropzone";
 

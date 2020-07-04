@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import Uf from '../models/UF';
-import City from '../models/City';
+import City from '../models/CityModel';
 
 type TgetBrazilianUFsCB = /* (array: Uf[]) => void; */  React.Dispatch<React.SetStateAction<Uf[]>>;
 

@@ -42,7 +42,7 @@ The project aims to **establish a connection** between **companies and / or enti
   - **[KnexJS][knex]**
   - **[SQLite][sqlite3]**
   - **[ts-node][tsnode]**
-  - **[dotENV][dotenv]**
+  <!-- - **[dotENV][dotenv]** -->
   - **[Multer][multer]**
   - **[Celebrate][celebrate]**
   - **[Joi][joi]**

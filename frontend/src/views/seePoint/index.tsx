@@ -1,57 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
+import { useHistory } from "react-router-dom";
+
+import MyMap from '../cretatePoint/Map';
 
 import Header from '../../components/Header';
-import { SelectionCityField, SelectionUFField } from "../../components/forms/SelectionFiled";
-import Uf from '../../models/UF';
-import City from '../../models/City';
-import LocationUtils from '../../functions/locationUtils';
+
+import ItemsModel from '../../models/ItemModel';
+import PointModel from '../../models/PointModel';
+
+import ItemsController from '../../functions/ItemsController';
+import PointsController from "../../functions/PointsController";
 
 import './seePoints.css';
 
-
 const SeePoint:React.FC = () => {
 
-    const [availableUfs, setAvailableUFs] = useState<Uf[]>([]);
-    const [availableCities, setAvailableCities] = useState<City[]>([]);
-    const [selectedUF, setSelectedUf] = useState<string|null>(null);
-    const [selectedCity, setSelectedCity] = useState<string|null>(null);
+    const navigate = useHistory();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const [selectedPosition, setSelectedPosition] = useState<[number,number]>(
+        [-7.109594, -34.8303375]
+    );
 
-        alert('In development');
-        console.log({selectedUF, selectedCity});
+    const [items, setItems] = useState<ItemsModel[]>([]);
+    const [selectedItems, setSelectedItems] = useState<ItemsModel[]>([]);
+    const [points, setPoints] = useState<PointModel[]>([]);
 
-    };
 
-    // get brazilian UFs
-    useEffect(() => {
-        const locationUtils = new LocationUtils();
-        locationUtils.getBrazilianUFs(setAvailableUFs);
+    // get default location
+    useEffect(()=> {
+        navigator.geolocation.getCurrentPosition(position => {
+            const {latitude, longitude} = position.coords;
+
+            setSelectedPosition([latitude,longitude]);
+        });
+
     }, []);
 
-    const handleSelectUf = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const uf = event.target.value;
+    // get initial items
+    useEffect(() => {
+        const itemsController = new ItemsController();
+        itemsController.getItems(setItems);
+    }, []);
 
+    // get points of selected items
+    useEffect(() => {
+        PointsController.getPoints({ items_ids: selectedItems.map(item => item.id) }, setPoints);
+    }, [selectedItems])
 
-        if (!uf){
-            return;
-        }
-
-        setSelectedUf(uf);
-
-        const locationUtils = new LocationUtils();
-        locationUtils.HandleSelectUf(uf, setAvailableCities)
-
+    const handleGoToPointDetail = (pointId:number) => {
+        navigate.push(`/point_detail/${pointId}`)
     }
 
-    const handleSelectCity = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const city = event.target.value;
-        if (!city){
-            return;
+    const handleClickItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, index: number) => {
+        event.currentTarget.classList.toggle("selected");
+
+        // get item id
+        const { id: itemId } = items[index];
+
+        // remove / add item from selected items
+        const itemSelected = selectedItems.find(item => item.id === itemId)
+
+        if (itemSelected) {
+            setSelectedItems(selectedItems.filter(item => item.id !== itemId));
+        } else {
+            setSelectedItems([...selectedItems, items[index]]);
         }
-        setSelectedCity(city);
+
     }
 
     return (
@@ -66,29 +81,42 @@ const SeePoint:React.FC = () => {
                 <main>
                     <h1> Your marketplace of waste collection </h1>
                     <p> Find a place to take your waste </p>
-                    <form onSubmit={handleSubmit}>
+                    <div>
+                        <MyMap
+                            latitude={selectedPosition[0]}
+                            longitude={selectedPosition[1]}
+                            clickMouseCB={setSelectedPosition}
+                            markers={points.map(point => {
+                                return {
+                                    latitude:point.latitude,
+                                    longitude:point.longitude,
+                                    markerClickAction: () => handleGoToPointDetail(point.id),
+                                    image: point.image,
+                                    title: point.name
+                                }
+                            })}
+                        />
 
-                        <div className="field-group">
-                            <SelectionUFField
-                                fieldName="State"
-                                fieldId="uf"
-                                optionCaption="Select your State"
-                                options={availableUfs}
-                                onChange={handleSelectUf}>
-                            </SelectionUFField>
-
-                            <SelectionCityField
-                                fieldName="City"
-                                fieldId="city"
-                                optionCaption="Select your city"
-                                options={availableCities}
-                                onChange={handleSelectCity} >
-                            </SelectionCityField>
-                        </div>
+                    </div>
 
 
-                        <button type="submit">Submit</button>
-                    </form>
+                    <div className="filters-wrappers">
+                        <h2>Filter</h2>
+
+                        <ul className="items-grid">
+                            {items.map((item, index) => {
+                                return (
+                                    <li
+                                        className="item"
+                                        onClick={(evt) => handleClickItem(evt, index)}
+                                        >
+                                        <img src={item.image} alt="" />
+                                        <span>{item.title}</span>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </main>
             </div>
         </div>
