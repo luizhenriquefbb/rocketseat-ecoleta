@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import http from 'http';
 import path from 'path';
+import { errors } from "celebrate";
 
 import routes from './routes';
 import { PORT } from './constants';
@@ -22,5 +23,7 @@ app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
 
 // import routes
 app.use(routes);
+
+app.use(errors());
 
 server.listen(process.env.PORT || PORT);
