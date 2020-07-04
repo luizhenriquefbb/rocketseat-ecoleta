@@ -1,9 +1,13 @@
 import express from 'express';
 
+import multer from "multer";
+import multerConfig from "./config/multer";
+
 import * as ItemsController from "./controllers/ItemsController";
 import * as PointsController from "./controllers/PointsController";
 
 const routes = express.Router();
+const upload = multer(multerConfig);
 
 // hello word
 routes.post('/hello_world', (req, res) => res.json({
@@ -22,7 +26,7 @@ routes.get('/hello_world', (_, res) => res.json({
 routes.get('/items', ItemsController.index);
 
 // create points
-routes.post('/point', PointsController.store);
+routes.post('/point', upload.single('image'), PointsController.store);
 
 // show point by id
 routes.get('/point/:id', PointsController.show);

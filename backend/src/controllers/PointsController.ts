@@ -1,6 +1,7 @@
 import { Response, Request, response } from 'express';
 import knex from '../database/connection';
 import PointModel from '../models/PointModel';
+import { BASE_URL } from '../constants';
 
 /**
  * create points
@@ -16,11 +17,17 @@ export async function store(req: Request, res: Response) {
         longitude,
         city,
         UF,
-        items,
     } = req.body;
 
-    // using default image for now
-    const image = "https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60";
+    const image = req.file.filename;
+
+    // parse items string to array of numbers
+    let items: number[];
+    try {
+        items = JSON.parse(req.body.items);
+    } catch (error) {
+        return res.status(400).json({ reason: '"Items" bad formated' });
+    }
 
     // check if all attributes exists and came from post
     if (
@@ -80,10 +87,12 @@ export async function show(req: Request, res: Response) {
 
 
     const point = await knex('points').where('id', pointId).first();
+    point.image = `${BASE_URL}/uploads/uploads/${point.image}`;
+
 
     const items = await knex('items').
         join('points_items', 'items.id', '=', 'points_items.item_id').
-        where('points_items.item_id', pointId);
+        where('points_items.point_id', pointId);
 
     if (!point) {
         return res.status(400).json({
@@ -136,7 +145,7 @@ export async function index(req:Request, res:Response) {
             longitude: point.longitude,
             city: point.city,
             UF: point.UF,
-            image: point.image,
+            image: `${BASE_URL}/uploads/uploads/${point.image}`,
         });
     })
 

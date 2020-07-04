@@ -14,7 +14,8 @@ import ItemsController from "../../functions/ItemsUtils";
 import LocationUtils from "../../functions/locationUtils";
 import Uf from "../../models/UF";
 import City from "../../models/City";
-import ISubmissionData from "../../models/NewProductSubmission";
+
+import MyDropZone from "../../components/dropzone";
 
 
 import api from '../../services/api';
@@ -36,7 +37,7 @@ const CreatePoint: React.FC = () => {
     const [selectedPosition, setSelectedPosition] = useState<[number,number]>([-7.109594, -34.8303375]);
 
 
-    const [image , setImage] = useState<string>("");
+    const [imageFile , setImageFile] = useState<File>();
     const [name  , setName] = useState<string>("");
     const [email , setEmail] = useState<string>("");
     const [phone , setPhone] = useState<string>("");
@@ -110,21 +111,20 @@ const CreatePoint: React.FC = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-
-        const data:ISubmissionData = {
-            image,
-            name,
-            email     : email,
-            whatsapp  : phone,
-            latitude  : selectedPosition[0],
-            longitude : selectedPosition[1],
-            city      : selectedCity,
-            UF        : selectedUF,
-            items     : selectedItems.map(item => {return item.id}),
+        const formData = new FormData();
+        if (imageFile){
+            formData.append('image'    , imageFile);
         }
+        formData.append('name'     , name);
+        formData.append('email'    , email);
+        formData.append('whatsapp' , phone);
+        formData.append('latitude' , String(selectedPosition[0]));
+        formData.append('longitude', String(selectedPosition[1]));
+        formData.append('city'     , String(selectedCity));
+        formData.append('UF'       , String(selectedUF));
+        formData.append('items'    , JSON.stringify(selectedItems.map(item => {return item.id})));
 
-
-        api.post('point', data)
+        api.post('point', formData)
             .then((response:AxiosResponse<any>) => {
                 if (response.status === 200){
                     alert("Success");
@@ -151,6 +151,9 @@ const CreatePoint: React.FC = () => {
 
             <form onSubmit={handleSubmit}>
                 <h1>Create a new <br/> collection spot</h1>
+
+                {/* image */}
+                <MyDropZone onFileUploaded={setImageFile}/>
 
                 {/* data */}
                 <FieldSet
@@ -224,6 +227,7 @@ const CreatePoint: React.FC = () => {
                         {items.map((item, index) => {
                             return <li key={index} onClick={(e) => handleClickItem(e, index)}>
                                 <img src={item.image} alt={item.title}/>
+                                <span>{item.title}</span>
                             </li>
                         })}
                     </ul>
