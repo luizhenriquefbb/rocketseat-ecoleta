@@ -1,5 +1,5 @@
 <h1 align=center>
-  <img src="./readme_files/banner.png" />
+    <img src="./readme_files/banner.png" />
 </h1>
 
 <div align="center">
@@ -10,7 +10,7 @@
 
 <h3 align="center">
 
-♻️ Ecoleta is a **Open Source** project developed during the week **Next Level Week (1.0)** by **[Rocketseat] [rocketseat_site]** using **TypeScript, Node, React and React Native technologies** .
+♻️ Ecoleta is a **Open Source** project developed during the week **Next Level Week (1.0)** by **[Rocketseat] [rocketseat_site)** using **TypeScript, Node, React and React Native technologies** .
 
 </h3>
 
@@ -20,6 +20,11 @@ The project aims to **establish a connection** between **companies and / or enti
 
 
 ![home](readme_files/home.png)
+
+
+# Preview
+
+[check the application here](http://35.223.223.97:3000)
 
 
 ## **:computer: Techs**

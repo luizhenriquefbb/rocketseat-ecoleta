@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "ecoleta-backend",
+            "cwd": "./backend",
+            "script": "yarn execute"
+        },
+        {
+            "name": "ecoleta-frontend",
+            "cwd": "./frontend",
+            "script": "yarn start"
+        }
+    ]
+}
