@@ -20,7 +20,7 @@ const Home = () => {
             <View style={styles.main}>
                 <Image source={require('../../assets/logo.png')} />
                 <Text style={styles.title}>Your marketplace of waste collection</Text>
-                <Text style={styles.description}>We help people to find collection places in an efficiency way</Text>
+                <Text style={styles.description}>We help people to find collect point in an efficiency way</Text>
 
                 <View style={styles.footer}>
                     <RectButton

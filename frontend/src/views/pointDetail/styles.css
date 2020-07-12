@@ -4,6 +4,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 5%;
 }
 
 header a {
@@ -30,7 +31,7 @@ header a svg {
     max-width: 970px;
     margin: 0 auto;
     margin-top: 50px;
-    padding: 29px 112px;
+    padding: 19px 9%;
     background-color: white;
     border-radius: 5px;
 }
@@ -68,9 +69,9 @@ header a svg {
 }
 
 #point-detail .locations-details-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 100%;
 }
 
 #point-detail .locations-details-wrapper > * {
@@ -91,5 +92,11 @@ header a svg {
 
 .span-span-wrapper .title{
   font-weight: bold;
+}
+
+@media (max-width: 675px){
+  #point-detail .locations-details-wrapper {
+    grid-template-columns: auto;
+  }
 }
 

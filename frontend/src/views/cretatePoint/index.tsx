@@ -150,7 +150,7 @@ const CreatePoint: React.FC = () => {
             <Header backLink={{text: "Back to main", link: "/", icon: FiArrowLeft}}/>
 
             <form onSubmit={handleSubmit}>
-                <h1>Create a new <br/> collection spot</h1>
+                <h1>Create a new <br /> collect point</h1>
 
                 {/* image */}
                 <MyDropZone onFileUploaded={setImageFile}/>

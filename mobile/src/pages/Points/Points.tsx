@@ -40,7 +40,7 @@ const Points = () => {
 
             // if user denies location
             if (status !== 'granted'){
-                Alert.alert('Ops', 'We need your permission to show waist spots');
+                Alert.alert('Ops', 'We need your permission to show waste spots');
                 return;
             }
 
@@ -100,7 +100,7 @@ const Points = () => {
             </TouchableOpacity>
 
             <Text style={styles.title}> Welcome </Text>
-            <Text style={styles.description}> Find on the map a collection spot </Text>
+            <Text style={styles.description}> Find on the map a collect point </Text>
 
             <View style={styles.mapContainer}>
                 <Spinner

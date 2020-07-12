@@ -1,5 +1,5 @@
 <h1 align=center>
-    <img src="./readme_files/banner.png" />
+    <img src="./readme_files/home.png" />
 </h1>
 
 <div align="center">
@@ -10,16 +10,16 @@
 
 <h3 align="center">
 
-♻️ Ecoleta is a **Open Source** project developed during the week **Next Level Week (1.0)** by **[Rocketseat] [rocketseat_site)** using **TypeScript, Node, React and React Native technologies** .
+♻️ Ecoleta is a **Open Source** project developed during the week **Next Level Week (1.0)** by **[Rocketseat](https://rocketseat.com.br/)** using **TypeScript, Node, React and React Native technologies** .
 
 </h3>
 
 ## **:rocket: Goal**
 
-The project aims to **establish a connection** between **companies and / or entities that collect waste** (organic and inorganic) **to people and / or entities that constantly need to dispatch of their waste**. Solving a major recurring problem that is **inappropriate waste disposal**, facilitating the recycling and reuse process.
+The project aims to **establish a connection** between **companies and / or entities that collects waste** (organic and inorganic) **to people and / or entities that constantly need to dispatch of their waste**. Solving a major recurring problem that is **inappropriate waste disposal**, facilitating the recycling and reuse process.
 
 
-![home](readme_files/home.png)
+
 
 
 # Preview
